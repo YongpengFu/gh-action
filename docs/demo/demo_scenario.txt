@@ -1,0 +1,36 @@
+set type_wait = 0.12
+set pre_enter_wait = .9
+set enter_wait = 2
+
+wait .5
+$>> calcpy
+wait 5.5
+
+$> sqrt(2) + pi + 2/7
+
+$> _/2
+
+$> 3MB - 200KB
+
+$> 45EUR
+
+$> diff(sin(x**4))
+
+$> ((1,2),(3,4))*((5,6),(7,8))
+
+$> ((1,0),(a,b))^-1
+
+$> x^2+3x-1=0
+
+$> tan(x)?
+wait 3.5
+
+$> ((1,2),(2,1))?
+wait 3.5
+
+$> $\frac{1}{x}$ * $\sin{x}$
+
+$> diff(_)
+
+$> latex(_)
+wait 6

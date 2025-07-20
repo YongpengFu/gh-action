@@ -75,4 +75,26 @@ jobs:
       - name: Run unit tests
         run: |
           pytest ./calcpy/tests
+
+  node-setup:
+    runs-on: ubuntu-latest
+    outputs:
+      node-version: ${{ steps.set-node.outputs.node-version }}
+
+    steps:
+      - name: Set up Node.js
+        id: set-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Show installed Node version
+        run: echo "Node version is ${{ steps.set-node.outputs.node-version }}"
     
+  use-node:
+    runs-on: ubuntu-latest
+    needs: node-setup
+
+    steps:
+      - name: Show node version from previous job
+        run: echo "Node version from job: ${{ needs.node-setup.outputs.node-version }}"

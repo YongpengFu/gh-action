@@ -97,4 +97,4 @@ jobs:
 
     steps:
       - name: Show node version from previous job
-        run: echo "Node version from job: ${{ steps.set-node.outputs.node-version }}"
+        run: echo "Node version from job ${{ steps.set-node.outputs.node-version }}"

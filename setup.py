@@ -28,6 +28,13 @@ setuptools.setup(
         'dateparser',
         'antlr4-python3-runtime==4.11', # todo: move to Lark when sympy supports it
     ],
+    extras_require={
+        "dev": [
+            "pytest",
+            "pytest-cov",
+            "flake8",
+        ]
+    },
     license='MIT License',
     zip_safe=False,
     keywords=['calculator',],

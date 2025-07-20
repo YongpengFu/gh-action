@@ -117,3 +117,4 @@ urllib3==2.3.0
 vine==5.1.0
 wikipedia==1.4.0
 yarl==1.18.3
+ipython==8.31.0

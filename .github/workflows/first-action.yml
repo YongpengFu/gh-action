@@ -86,6 +86,16 @@ jobs:
       - name: Run unit tests
         run: |
           pytest ./calcpy/tests
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source code from build
+        uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+      - name: Output artifact files
+        run: ls -la
 
   node-setup:
     runs-on: ubuntu-latest

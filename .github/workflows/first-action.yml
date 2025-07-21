@@ -37,6 +37,7 @@ jobs:
         run: |
           # pip install -r requirements.txt
           pip install .[dev]
+          pip install setuptools wheel
           pip list
       # Runs a single command using the runner's shell
       - name: Run a one-line script

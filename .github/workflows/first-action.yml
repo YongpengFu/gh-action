@@ -52,6 +52,10 @@ jobs:
         with:
           name: source-code
           path: .  # include everything or just the needed directories
+      - name: Build the package
+        run: |
+          python setup.py sdist bdist_wheel
+          echo "Build completed successfully."
       - name: upload artifact
         uses: actions/upload-artifact@v4
         with:

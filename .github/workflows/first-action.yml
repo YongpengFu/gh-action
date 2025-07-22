@@ -135,4 +135,4 @@ jobs:
           echo "Node version from job ${{ needs.node-setup.outputs.node-version }}"
       - name: Show random value from previous job
         run: |
-          echo "Random value from job ${{ needs.node-setup.outputs.a-randome-value
+          echo "Random value from job ${{ needs.node-setup.outputs.a-randome-value }}""

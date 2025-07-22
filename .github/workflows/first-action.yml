@@ -53,6 +53,12 @@ jobs:
         with:
           name: source-code
           path: .  # include everything or just the needed directories
+      - name: Set up cache for Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+
       - name: Build the package
         run: |
           python setup.py sdist bdist_wheel
@@ -73,6 +79,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: source-code
+
+      - name: Set up cache for Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
 
       - name: Install Python
         uses: actions/setup-python@v5.6.0
@@ -101,6 +113,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       node-version: ${{ steps.set-node.outputs.node-version }}
+      a-randome-value: "random-value"
 
     steps:
       - name: Set up Node.js
@@ -118,4 +131,8 @@ jobs:
 
     steps:
       - name: Show node version from previous job
-        run: echo "Node version from job ${{ needs.node-setup.outputs.node-version }}"
+        run: | 
+          echo "Node version from job ${{ needs.node-setup.outputs.node-version }}"
+      - name: Show random value from previous job
+        run: |
+          echo "Random value from job ${{ needs.node-setup.outputs.a-randome-value

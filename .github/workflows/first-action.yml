@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       # The Docker image to use for the job
-      image: python:3.12
+      image: python:3
       # Optional: Set the working directory inside the container
       options: --workdir /usr/src/app
 

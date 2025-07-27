@@ -78,7 +78,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: python:3.12-slim
+      image: python:3
       options: --workdir /usr/src/app
     needs: build  # this ensures test runs after build completes
 
@@ -94,10 +94,10 @@ jobs:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
 
-      - name: Install Python
-        uses: actions/setup-python@v5.6.0
-        with:
-          python-version: 3.12
+      # - name: Install Python
+      #   uses: actions/setup-python@v5.6.0
+      #   with:
+      #     python-version: 3.12
 
       - name: Install package
         run: |

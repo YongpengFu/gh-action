@@ -81,6 +81,15 @@ jobs:
       image: python:3
       options: --workdir /usr/src/app
     needs: build  # this ensures test runs after build completes
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        options: --health-cmd "echo 'db.runCommand({ ping: 1 })' | mongo" --health-interval 10s --health-timeout 5s --health-retries 5
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: example
 
     steps:
       - name: Download source code from build

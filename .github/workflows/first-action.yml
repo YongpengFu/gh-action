@@ -80,14 +80,14 @@ jobs:
     container:
       image: python:3
       options: --workdir /usr/src/app
-    needs: build  # this ensures test runs after build completes
+    needs: build
     services:
       mongodb:
-        image: mongo:latest
+        image: mongo:5.0
         ports:
           - 27017:27017
         options: >-
-          --health-cmd "echo 'db.runCommand({ ping: 1 })' | mongo"
+          --health-cmd "mongo --eval 'db.runCommand({ ping: 1 })'"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -101,16 +101,8 @@ jobs:
         with:
           name: source-code
 
-      - name: Set up cache for Python dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-
-      # - name: Install Python
-      #   uses: actions/setup-python@v5.6.0
-      #   with:
-      #     python-version: 3.12
+      - name: Wait for MongoDB to start
+        run: sleep 20
 
       - name: Install package
         run: |
